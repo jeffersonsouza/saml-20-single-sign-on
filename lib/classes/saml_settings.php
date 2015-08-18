@@ -31,6 +31,11 @@ Class SAML_Settings
     return (string) $this->settings['idp'];
   }
   
+  public function get_entityId()
+  {
+    return (string) $this->settings['entityId'];
+  }
+  
   public function get_nameidpolicy()
   {
     return (string) $this->settings['nameidpolicy'];
@@ -118,6 +123,21 @@ Class SAML_Settings
     if( is_string($value) )
     {
       $this->settings['idp'] = $value;
+      $this->_set_settings();
+    }
+  }
+  
+  /**
+   * Sets the Entity ID
+   * 
+   * @param string $value The new Entity ID
+   * @return void
+   */
+  public function set_entityId($value)
+  {
+    if( is_string($value) )
+    {
+      $this->settings['entityId'] = $value;
       $this->_set_settings();
     }
   }
@@ -281,7 +301,8 @@ Class SAML_Settings
         'subscriber' => '',
       ),      
       'allow_unlisted_users' => true,
-      'allow_sso_bypass' => false
+      'allow_sso_bypass' => false,
+      'entityId' => 'defaultSP',
     );
     
     return($defaults);

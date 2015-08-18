@@ -3,7 +3,6 @@
 $wp_opt = get_option('saml_authentication_options');
 $blog_id = (string)get_current_blog_id();
 
-
 $config = array(
 
 	// This is a authentication source which handles admin authentication.
@@ -23,7 +22,7 @@ $config = array(
 		'NameIDPolicy' => $wp_opt['nameidpolicy'],
 		// The entity ID of this SP.
 		// Can be NULL/unset, in which case an entity ID is generated based on the metadata URL.
-		'entityID' => NULL,
+		'entityID' => $wp_opt['entityId'],
 		'sign.authnrequest' => TRUE,
 		'sign.logout' => TRUE,
 		'redirect.sign' => TRUE,

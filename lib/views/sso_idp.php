@@ -35,7 +35,7 @@
     
     
     <table class="form-table">
-        <?php
+        <?php 
             foreach($metadata as $key => $idp)
             {
 ?>
@@ -43,6 +43,12 @@
   <th scope="row"><label for="idp_name">IdP name</label></th> 
   <td><input type="text" name="idp_name" id="sp_auth_inp" value="<?php echo $idp['name']['en']; ?>" size="40" />
   <span class="setting-description">The name that will appear when setting up a service provider.</span> 
+  </td>
+</tr>
+<tr valign="top">
+  <th scope="row"><label for="idp_entityId">Entity ID</label></th> 
+  <td><input type="text" name="idp_entityId" id="idp_entityId" value="<?php echo $idp['entityId']; ?>" size="40" />
+  <span class="setting-description">The entityID of your application at service provider.</span> 
   </td>
 </tr>
 <tr valign="top">

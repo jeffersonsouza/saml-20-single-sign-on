@@ -181,6 +181,7 @@ class SAML_Client
   private function update_role()
   {
     $attrs = $this->saml->getAttributes();
+    
     if(array_key_exists($this->settings->get_attribute('groups'), $attrs) )
     {
       if( in_array($this->settings->get_group('admin'),$attrs[$this->settings->get_attribute('groups')]) )

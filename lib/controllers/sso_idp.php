@@ -97,11 +97,16 @@ elseif (isset($_POST['submit']) && wp_verify_nonce($_POST['_wpnonce'],'sso_idp_m
         {
           $this->settings->set_idp($_POST['idp_identifier']);
         }
+        if($key != $_POST['idp_entityId'])
+        {
+          $this->settings->set_entityId($_POST['idp_entityId']);
+        }
     }
     
     $contents =  '[' . $_POST['idp_identifier'] . ']'."\n";
     $contents .= '  name = "' . $_POST['idp_name'] . '"'."\n";
     $contents .= '  SingleSignOnService = "' . $_POST['idp_signon'] . '"'."\n";
+    $contents .= '  entityId = "' . $_POST['idp_entityId'] . '"'."\n";
     $contents .= '  SingleLogoutService = "' . $_POST['idp_logout'] . '"'."\n";
     $contents .= '  certFingerprint = "' . str_replace(':','',$_POST['idp_fingerprint']) . '"'."\n";
     
@@ -114,4 +119,5 @@ elseif (isset($_POST['submit']) && wp_verify_nonce($_POST['_wpnonce'],'sso_idp_m
   
   include(constant('SAMLAUTH_ROOT') . '/lib/views/nav_tabs.php');
 	include(constant('SAMLAUTH_ROOT') . '/lib/views/sso_idp.php');
+    
 ?>
